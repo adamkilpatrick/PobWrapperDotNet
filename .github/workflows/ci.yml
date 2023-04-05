@@ -15,4 +15,4 @@ jobs:
     - name: Checkout
       run: dotnet build ./PobWrapperDotNet
     - name: SmokeTests
-      run: docker compose -f ./PobWrapperDotNet.Tests\docker-compose.yaml up
+      run: docker compose -f ./PobWrapperDotNet.Tests/docker-compose.yaml up
