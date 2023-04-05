@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Checkout
+    - name: Build
       run: dotnet build ./PobWrapperDotNet
     - name: SmokeTests
-      run: docker compose -f ./PobWrapperDotNet.Tests\docker-compose.yaml up
+      run: docker compose -f ./PobWrapperDotNet.Tests/docker-compose.yaml up
