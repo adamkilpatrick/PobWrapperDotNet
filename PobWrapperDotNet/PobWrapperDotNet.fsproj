@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <OtherFlags>--sig:PobWrapper.fsi</OtherFlags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="PobWrapper.fs" />
+    <None Include="hooks.lua" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="shim.lua" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="NLua" Version="1.6.2" />
+  </ItemGroup>
+</Project>

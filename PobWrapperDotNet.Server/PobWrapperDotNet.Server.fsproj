@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <ProjectReference Include="..\PobWrapperDotNet\PobWrapperDotNet.fsproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="NLua" Version="1.6.2" />
+  </ItemGroup>
+  <Target Name="FSharpLint" AfterTargets="BeforeBuild">
+    <Exec
+      Command="dotnet fsharplint -f msbuild lint $(MSBuildProjectFullPath)"
+      ConsoleToMsBuild="true"
+      IgnoreExitCode="false"
+    />
+  </Target>
+</Project>

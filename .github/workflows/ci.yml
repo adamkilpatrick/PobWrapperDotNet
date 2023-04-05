@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Checkout
+      run: dotnet build ./PobWrapperDotNet
+    - name: SmokeTests
+      run: docker compose -f ./PobWrapperDotNet.Tests\docker-compose.yaml up

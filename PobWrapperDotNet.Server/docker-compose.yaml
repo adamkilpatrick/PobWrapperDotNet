@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  pobwrapper-server:
+    build: 
+      context: ".."
+      dockerfile: "Dockerfile-server"
+    ports:
+      - "8080:80"

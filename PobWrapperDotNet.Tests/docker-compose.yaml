@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  smoke-tests:
+    build: 
+      context: ".."
+      dockerfile: "Dockerfile-smokeTests"

@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+WORKDIR /App
+
+RUN git clone https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
+# Need to add all the lua 'packages' to the root with the rest of the lua in order for require calls to succeed
+RUN cp -r ./PathOfBuilding/runtime/lua/* ./PathOfBuilding/src/
+ENV POB_SRC_PATH=/App/PathOfBuilding/src
+
+# Copy everything
+COPY . ./
+# Restore as distinct layers
+RUN dotnet restore ./PobWrapperDotNet
+RUN dotnet restore ./PobWrapperDotNet.Tests
+# Build and publish a release
+RUN dotnet build ./PobWrapperDotNet
+RUN dotnet build ./PobWrapperDotNet.Tests
+
+
+ENTRYPOINT [ "dotnet", "test", "./PobWrapperDotNet.Tests/PobWrapperDotNet.Tests.fsproj" ]
