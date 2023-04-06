@@ -1,3 +1,6 @@
+| NuGet |
+| ------|
+|[![nuget](https://badgen.net/nuget/v/PobWrapperDotNet?icon=nuget)](https://www.nuget.org/packages/PobWrapperDotNet)|
 # PobWrapper
 
 A dotnet wrapper around the core logic within PathOfBulding (https://pathofbuilding.community/)
@@ -49,7 +52,7 @@ printfn "%A" calcs
 ```
 
 ## Help
-PoB appears to be targeting Lua 5.1 and NLua is running agains Lua 5.4, so a shim has been created to fix the many backwards incompatible changes that happened between those versions. Since the shim doesn't cover all breaking changes (just the ones that are in the critical path of the calls that this library makes) updates to PoB will inevitably break this unless appropriate updates are made to the shim lua. Debugging lua issues can be quite painful and as time goes on hopefully some additional tools can be built into this package to alleviate that pain.
+PoB appears to be targeting Lua 5.1 and NLua is running against Lua 5.4, so a shim has been created to fix the many backwards incompatible changes that happened between those versions. Since the shim doesn't cover all breaking changes (just the ones that are in the critical path of the calls that this library makes) updates to PoB will inevitably break this unless appropriate updates are made to the shim lua. Debugging lua issues can be quite painful and as time goes on hopefully some additional tools can be built into this package to alleviate that pain.
 
 ## To Do
 - [ ] Expose setting of skill group (right now it is using the PoB behavior that auto selects whichever group does the most damage)
