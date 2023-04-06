@@ -15,6 +15,8 @@ jobs:
         git branch --remote --contains | grep origin/main
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+    - name: InstallLinter
+      run: dotnet tool install -g dotnet-fsharplint
     - name: Build
       run: dotnet build --configuration Release /p:Version=${VERSION} ./PobWrapperDotNet
     - name: Test
