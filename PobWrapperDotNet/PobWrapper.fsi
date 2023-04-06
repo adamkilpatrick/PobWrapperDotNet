@@ -9,7 +9,29 @@ namespace PobWrapperDotNet
         type PobContext =
             { Lua: NLua.Lua }
         
+        type ItemSlot =
+            | Weapon1
+            | Weapon2
+            | Helmet
+            | BodyArmour
+            | Gloves
+            | Boots
+            | Amulet
+            | Ring1
+            | Ring2
+            | Belt
+        
         val private luaTableToMap: luaTable: NLua.LuaTable -> Map<string,obj>
+        
+        /// <summary>Converts an itemslot to a string</summary>
+        /// <param name="itemSlot">Itemslot enum</param>
+        /// <returns>String representation of the itemslot</returns>
+        val itemSlotToString: itemSlot: ItemSlot -> string
+        
+        /// <summary>Converts a string to an itemslot. Throws if no item slot can be parsed.</summary>
+        /// <param name="itemSlotString">String representation of the itemslot.</param>
+        /// <returns>The ItemSolt enum value</returns>
+        val stringToItemSlot: itemSlotString: string -> ItemSlot
         
         /// <summary>Creates the initial lua context that will be used for later calls.</summary>
         /// <param name="logger">logger</param>
@@ -38,6 +60,30 @@ namespace PobWrapperDotNet
         val getCalcsForContext:
           logger: Microsoft.Extensions.Logging.ILogger ->
             context: PobContext -> Map<string,obj>
+        
+        /// <summary>
+        /// Gets a Map<string,obj> representing the calculations for the currently loaded build, 
+        /// substituting the item at the provided itemslot with the item represented by the itemString param.
+        /// Note that the values returned in this table can be of various types (float, int, bool).
+        /// </summary>
+        /// <param name="logger">Logger</param>
+        /// <param name="context">Initialized context</param>
+        /// <param name="itemSlot">The item slot to substitute with</param>
+        /// <param name="itemString">The string of the item to substitute with (e.g. copied from the game or trade)</param>
+        /// <returns>String -> object mapping of all the calculations for the current build with the item override.</returns>
+        val getCalcsForContextWithItemOverride:
+          logger: Microsoft.Extensions.Logging.ILogger ->
+            context: PobContext ->
+            itemSlot: ItemSlot -> itemString: string -> Map<string,obj>
+        
+        /// <summary>Returns the set of possible slots that an item could be placed into for the current build.</summary>
+        /// <param name="logger">Logger</param>
+        /// <param name="context">The context of the current built</param>
+        /// <param name="itemString">The string of the item to substitute with (e.g. copied from the game or trade)</param>
+        /// <returns>Array containing all of the possible slots.</returns>
+        val getValidSlotsForItem:
+          logger: Microsoft.Extensions.Logging.ILogger ->
+            context: PobContext -> itemString: string -> ItemSlot array
         
         /// <summary>
         /// Loads build info into the provided context based on item and skill json strings pulled from the PoE api.

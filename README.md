@@ -14,7 +14,7 @@ The main output of this repo is a library that can be consumed by other dotnet a
 
 ### Installing
 
-* Nuget (add link once pushed)
+* Nuget (https://www.nuget.org/packages/PobWrapperDotNet/)
 * PathOfBuilding:
   * The library itself doesn't include or install the needed PathOfBuilding Lua, it just takes in a path to where that lua has been pulled, so if you are consuming this you will need to have some other way of pulling in the PoB repo. See the included Dockerfiles for examples.
 

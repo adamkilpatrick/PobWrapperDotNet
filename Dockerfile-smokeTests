@@ -1,4 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+RUN dotnet tool install -g dotnet-fsharplint
+ENV PATH="/root/.dotnet/tools:${PATH}"	
 WORKDIR /App
 
 RUN git clone https://github.com/PathOfBuildingCommunity/PathOfBuilding.git
