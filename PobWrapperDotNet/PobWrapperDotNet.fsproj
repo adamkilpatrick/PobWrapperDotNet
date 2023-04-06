@@ -11,8 +11,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PobWrapper.fs" />
-    <None Include="hooks.lua" CopyToOutputDirectory="PreserveNewest" />
-    <None Include="shim.lua" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="hooks.lua" CopyToOutputDirectory="PreserveNewest" Pack="True"/>
+    <None Include="shim.lua" CopyToOutputDirectory="PreserveNewest" Pack="True"/>
     <None Include="../README.md" Pack="true" PackagePath="\"/>
     <None Include="../License.md" Pack="true" PackagePath="\"/>
     <None Include="../LICENSE" Pack="true" PackagePath="\"/>
